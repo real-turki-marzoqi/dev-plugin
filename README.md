@@ -30,21 +30,21 @@
 
 ## التثبيت
 
-> استبدل `<owner>/<repo>` باسم ريبو GitHub بعد الرفع.
+> الريبو: [real-turki-marzoqi/dev-plugin](https://github.com/real-turki-marzoqi/dev-plugin). **الريبو خاص:** التثبيت يحتاج أن يكون git على الجهاز مسجّل دخول بحساب له صلاحية عليه (مثلاً `gh auth login`).
 
 ### Claude Code
 
 داخل الجلسة:
 
 ```
-/plugin marketplace add <owner>/<repo>
+/plugin marketplace add real-turki-marzoqi/dev-plugin
 /plugin install dev-kit@dev-kit-marketplace
 ```
 
 أو من الطرفية:
 
 ```bash
-claude plugin marketplace add <owner>/<repo>
+claude plugin marketplace add real-turki-marzoqi/dev-plugin
 claude plugin install dev-kit@dev-kit-marketplace
 ```
 
@@ -58,7 +58,7 @@ claude plugin install dev-kit@dev-kit-marketplace
 ### Codex
 
 ```bash
-codex plugin marketplace add <owner>/<repo>
+codex plugin marketplace add real-turki-marzoqi/dev-plugin
 codex plugin add dev-kit@dev-kit-marketplace
 ```
 

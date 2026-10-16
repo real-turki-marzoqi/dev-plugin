@@ -5,5 +5,15 @@
   "author": {
     "name": "real-turki-marzoqi"
   },
-  "keywords": ["workflow", "project-memory", "agents-md", "notati", "testing", "audit", "codex"]
+  "homepage": "https://github.com/real-turki-marzoqi/dev-plugin",
+  "repository": "https://github.com/real-turki-marzoqi/dev-plugin",
+  "keywords": [
+    "workflow",
+    "project-memory",
+    "agents-md",
+    "notati",
+    "testing",
+    "audit",
+    "codex"
+  ]
 }
