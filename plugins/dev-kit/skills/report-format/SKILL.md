@@ -18,6 +18,7 @@ user-invocable: false
 | Short | Bullets with one idea each; no long paragraphs. |
 | Evidence | **Never claim anything without evidence** from this session. Unverified = say "غير متحقق". |
 | Secrets | Never include a Notati URL or any token. |
+| Missing skills | One line per skill listed in `stack_skills.<command>` that is not installed, under "محتاج منك": "سكل `<skill>` غير مثبتة، شغّل `/start-init`". |
 | User preferences | If the user's own instructions define a report style, follow them on top of this. |
 
 ## 2. Common "final check" table (every command that touched code)

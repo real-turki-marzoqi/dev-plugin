@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.0] — 2026-10-17
+
+### Added
+- External skills catalog `plugins/dev-kit/catalog/skills-catalog.json` (13 verified entries: references and install commands only, nothing copied) and its Arabic README.
+- `start-init`: project types, catalog filtering, installed-skill detection, explicit install approval, user-level plugins vs project-level `npx skills`, per-project activation (`.claude/settings.json` `enabledPlugins`, `.codex/config.toml` `[plugins."<id>"]`), `stack_skills` per command, `skills_catalog.reviewed` so re-runs show only new entries, and `--dry-run`.
+- `dev`, `tester`, `audit`, `identity` read `stack_skills.<command>` and use each skill in its stage; a missing skill is reported, never blocking.
+
+### Changed
+- Skills are the entry points in Claude Code (`/dev-kit:<name>`); `commands/` removed. Main skills grant `Read(${CLAUDE_PLUGIN_ROOT}/**)` via `allowed-tools`.
+- Codex reads `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json` directly; `.codex-plugin/` and `.agents/plugins/` removed.
+- Config: `project_types`, `stack_skills.{dev,tester,audit,identity}`, `skills_catalog`; removed `ux_gate.accessibility_skill` / `ux_gate.i18n_skill` (now `بوابة UX` skills).
+
+### Removed
+- Vendored `flutter-accessibility`, `flutter-internationalization`, `flutter-ui-package` and `LICENSE-vgv.txt`: the plugin no longer copies external skills.
+
 ## [0.1.0] — 2026-10-17
 
 ### Added

@@ -2,7 +2,7 @@
 name: identity
 description: Explore and lock the project's visual identity (colors, fonts, tokens) — research, 3 measured directions rendered on the project's key screen, one decision from the owner, then write the approved identity into the project. Use for "identity" or "/identity" with optional hints like "green and yellow" or "refine 2". Requires docs/PROJECT_CONFIG.md (created by start-init).
 argument-hint: "[optional: direction hints — e.g. \"green and gold\" or \"refine 2\"]"
-user-invocable: false
+allowed-tools: Read(${CLAUDE_PLUGIN_ROOT}/**)
 ---
 
 # identity — Visual identity: explore → measure → decide → lock
@@ -11,8 +11,8 @@ You are the **design lead** of this project. Colors and fonts in `identity.desig
 
 ## 0. Setup and governing rules
 
-**Load the shared skills first** (sibling folders; read each `SKILL.md` fully):
-`../memory-protocol/` · `../notati-sync/` · `../verify/` · `../report-format/` — and `../codex-adapter/` when running in Codex.
+**Load the shared skills first** — read each one fully: `memory-protocol` · `notati-sync` · `verify` · `report-format`, plus `codex-adapter` when running in Codex.
+Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that variable is not expanded: the sibling folder `../<name>/SKILL.md` of this skill).
 
 | Rule | Detail |
 |---|---|
@@ -22,6 +22,11 @@ You are the **design lead** of this project. Colors and fonts in `identity.desig
 | Evidence, not taste | Every claim about a direction is backed by a number or a source: contrast ratios computed by a script, font license read from its source page, glyph/feature support checked. "Looks modern" is not evidence. |
 | Hints | If `$ARGUMENTS` has hints, at least one direction follows them. `refine N` means: keep direction N from `identity.options_file` and produce 3 variations of it. |
 | Language | Tokens, code, file names in `language.code`. Docs entries in `language.docs`. All messages and the final report in `language.report`. |
+
+---
+
+### External skills — `stack_skills.identity`
+**Read `stack_skills.identity` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage** (`هوية بصرية`: research in section 3 and the token structure in section 4). A listed skill that is not installed: continue without it and add one line to the report: "سكل `<skill>` غير مثبتة، شغّل `/start-init`". Never stop for this.
 
 ---
 
@@ -49,9 +54,9 @@ You are the **design lead** of this project. Colors and fonts in `identity.desig
 
 ## 3. Research (gather inputs before inventing)
 
-1. **Domain data:** if a UI/UX design-intelligence skill is installed, query it for the product domain (color, typography, design system). Treat output as **input, not answer**.
+1. **Domain data:** query the `هوية بصرية` skills from `stack_skills.identity` for the product domain (color, typography, design system). Treat output as **input, not answer**.
 2. **Fonts:** shortlist 4–6 families that cover the required scripts. For each: license, weights, companion family, `tnum` support, readability at small sizes.
-3. **Brand vs. UX:** frame what the product should feel like from both perspectives explicitly (a design-lead skill can help if installed).
+3. **Brand vs. UX:** frame what the product should feel like from both perspectives explicitly (a listed design skill can help).
 4. **System structure:** token naming primitive → semantic → component, mapping 1:1 to `identity.token_file`.
 
 ## 4. Build 3 directions

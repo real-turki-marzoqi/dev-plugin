@@ -2,7 +2,7 @@
 name: dev
 description: Execute every task of one project phase end-to-end — at most 2 questions up front, then run without stopping until the final report. Moves tasks from not-started to in-progress to review (never to done). Use for "dev P3", "/dev 3", "نفذ P3", or "كمّل" on a phase. Requires docs/PROJECT_CONFIG.md (created by start-init).
 argument-hint: <phase — e.g. 3 or P3>
-user-invocable: false
+allowed-tools: Read(${CLAUDE_PLUGIN_ROOT}/**)
 ---
 
 # dev — Execute a full phase
@@ -11,8 +11,8 @@ You are the implementing developer of this project. Your job: execute the tasks 
 
 ## 0. Setup and governing rules
 
-**Load the shared skills first** (sibling folders of this skill; read each `SKILL.md` fully):
-`../memory-protocol/` · `../notati-sync/` · `../verify/` · `../report-format/` — and `../codex-adapter/` when running in Codex.
+**Load the shared skills first** — read each one fully: `memory-protocol` · `notati-sync` · `verify` · `report-format`, plus `codex-adapter` when running in Codex.
+Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that variable is not expanded: the sibling folder `../<name>/SKILL.md` of this skill).
 
 | Rule | Detail |
 |---|---|
@@ -25,12 +25,22 @@ You are the implementing developer of this project. Your job: execute the tasks 
 | Authority | `AGENTS.md` is the base protocol; this skill details it. On conflict: this skill governs workflow (stopping, questions); `AGENTS.md` section 5 (`code_rules`) governs code. |
 | Language | Per `language` in the config (code/commits vs docs vs report). |
 
-### Stack skills and tools
-Use the rows of `stack_skills` whose `commands` include `dev` (load each skill when its trigger applies; skip silently if not installed). In addition:
+### External skills — `stack_skills.dev`
+**Read `stack_skills.dev` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage:**
+
+| Stage | When | Typical skills |
+|---|---|---|
+| `تخطيط` | before implementing each task: shape the approach, module boundaries, patterns | design patterns, system design |
+| `تنفيذ` | while implementing: follow the skill's discipline (e.g. failing test first, then code) | test-driven development |
+| `شاشات` | any task that builds or changes a screen | design / UX / platform guideline skills |
+
+A listed skill that is not installed: continue without it and add one line to the report: "سكل `<skill>` غير مثبتة، شغّل `/start-init`". Never stop for this.
+
+Also:
 
 | Trigger | Do |
 |---|---|
-| Any task that builds or changes a screen, and `ux_gate.enabled` | Before coding, read `ux_gate.design_reference` (visual reference only — never copy its code or logic) and `ux_gate.ux_rules`. After coding, run `ux_gate.accessibility_skill` on the new UI if available. |
+| Any task that builds or changes a screen, and `ux_gate.enabled` | Before coding, read `ux_gate.design_reference` (visual reference only — never copy its code or logic) and `ux_gate.ux_rules`. |
 | An internal page, and `ux_gate.page_template` is set | Read it first and follow it, including any "describe the page before coding" rule it defines. |
 | Visual identity | If `identity.output` exists and is marked approved (`✅`), use only its tokens. Otherwise follow section 4.9. |
 

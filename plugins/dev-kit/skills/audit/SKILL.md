@@ -2,7 +2,7 @@
 name: audit
 description: Audit every completed task for security holes, calculation errors, and performance problems, plus the project's extra audit axes — prove each finding with a failing test or measurement, fix it, keep the regression test, and record it in the audit log, lessons, memory and Notati. Use for "audit", "/audit P3", or "/audit P3-005". Requires docs/PROJECT_CONFIG.md (created by start-init).
 argument-hint: "[optional: phase or task — e.g. P3 or P3-005]"
-user-invocable: false
+allowed-tools: Read(${CLAUDE_PLUGIN_ROOT}/**)
 ---
 
 # audit — Security, calculation, and performance audit
@@ -11,8 +11,8 @@ You are the **auditor** of this project. A security hole means abuse or theft; a
 
 ## 0. Setup and governing rules
 
-**Load the shared skills first** (sibling folders; read each `SKILL.md` fully):
-`../memory-protocol/` · `../notati-sync/` · `../verify/` · `../report-format/` — and `../codex-adapter/` when running in Codex.
+**Load the shared skills first** — read each one fully: `memory-protocol` · `notati-sync` · `verify` · `report-format`, plus `codex-adapter` when running in Codex.
+Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that variable is not expanded: the sibling folder `../<name>/SKILL.md` of this skill).
 
 | Rule | Detail |
 |---|---|
@@ -24,17 +24,20 @@ You are the **auditor** of this project. A security hole means abuse or theft; a
 | Status | The task stays `done` after the fix. If it cannot be fixed (section 4) → role `blocked`. |
 | Language | Per `language` in the config. |
 
-### Skills & tools (use when installed; skip silently otherwise)
-| Axis | Use |
+### External skills — `stack_skills.audit`
+**Read `stack_skills.audit` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage:**
+
+| Stage | When |
 |---|---|
-| Understanding before hunting | a context-building / function-by-function audit skill |
-| Security — whole codebase | a security scan skill; treat its verified findings as candidates you must still reproduce with a failing test |
-| Security — recent changes | a differential-review skill (git repo) |
-| Security — dangerous APIs/config | a sharp-edges / footgun-analysis skill (crypto, signing, auth, config defaults) |
-| Dependencies | a supply-chain audit skill for supported ecosystems; otherwise the ecosystem's outdated/advisory command |
-| Performance measurement | the stack's test/benchmark tooling; coverage to confirm the regression test runs |
-| Accessibility regressions | `ux_gate.accessibility_skill` (audit mode) on completed UI tasks, if `ux_gate.enabled` |
-| Stack specifics | rows of `stack_skills` whose `commands` include `audit` |
+| `تدقيق أمني` | axis 1 (section 3.1): run the skill on each task's files / diff |
+| `روائح الكود` | after the three axes: code smells, anti-patterns, design problems in the task's files |
+| `تحقق من الإصلاح` | after each fix (section 4): validate the patch against the finding and its variants |
+
+**Every observation from an external skill follows the same proof rules as yours:** it becomes a finding only with a failing test, a measurement, or a `file:line` + concrete input → wrong output scenario. Otherwise it goes to "اشتباه غير مؤكد" and is not fixed.
+
+A listed skill that is not installed: continue without it and add one line to the report: "سكل `<skill>` غير مثبتة، شغّل `/start-init`". Never stop for this.
+
+Built-in tooling that needs no catalog entry: the stack's test/benchmark tooling for performance, coverage to confirm the regression test runs, the ecosystem's dependency-advisory command, and the `بوابة UX` skills of `stack_skills.tester` (audit mode) on completed UI tasks when `ux_gate.enabled`.
 
 ---
 

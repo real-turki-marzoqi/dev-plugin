@@ -7,6 +7,8 @@
 ```yaml
 config_version: 1
 
+project_types: {{PROJECT_TYPES}}         # web · mobile · desktop · backend · odoo
+
 project:
   name: "{{PROJECT_NAME}}"
   description: "{{PROJECT_DESCRIPTION}}"
@@ -54,16 +56,26 @@ verify:
 
 code_rules: "AGENTS.md#5"            # مكان القواعد التي لا تُكسر
 
-stack_skills: []                     # جدول "Skills & tools to use" الخاص بالستاك
-#  - { trigger: "كتابة اختبارات", use: "اسم-السكل", commands: [dev, tester] }
+# السكلز الخارجية لكل كوماند ومرحلتها — يكتبها start-init من الكتالوج بعد موافقتك.
+# المراحل: dev → تخطيط · تنفيذ · شاشات | tester → تصحيح الأخطاء · بوابة UX · اختبار
+#          audit → تدقيق أمني · روائح الكود · تحقق من الإصلاح | identity → هوية بصرية
+stack_skills:
+  dev: []
+  tester: []
+  audit: []
+  identity: []
+#  مثال صف: - { id: "tdd", skill: "<plugin>:test-driven-development", stage: "تنفيذ" }
+
+skills_catalog:
+  catalog_updated: ""                # تاريخ الكتالوج اللي اتراجع
+  reviewed: []                       # كل سكل اتعرضت عليك (مثبتة أو لا) — لا يُعاد السؤال عنها
+  declined: []                       # اللي تخطيتها
 
 ux_gate:
   enabled: {{UX_GATE_ENABLED}}       # true لو المشروع فيه شاشات
   design_reference: ""               # مرجع بصري فقط، مثال: "docs/demo.html"
   ux_rules: ""                       # ملف/قسم قواعد تجربة الاستخدام وميزانية الخطوات
   page_template: ""                  # قالب الصفحات الداخلية إن وجد
-  accessibility_skill: ""            # سكل فحص الوصول للستاك، مثال: "<stack>-accessibility" (سكل مضمّنة أو من بلوقن الستاك)
-  i18n_skill: ""                     # سكل الترجمة والاتجاه للستاك
   token_file: ""                     # ملف التوكنز الوحيد المسموح فيه ألوان وخطوط حرفية
   hardcoded_style_patterns: []       # أنماط Grep للألوان/الخطوط الحرفية خارج ملف التوكنز
   checks: [accessibility, step_budget, shortcuts, rtl_strings, tokens_only, heuristic_review]
@@ -106,7 +118,9 @@ memory:
 | `notati.ignored_tasks` | تاسكات لا تُحدَّث أبداً (مكررة أو ملغاة) |
 | `verify.*` | أوامر التحقق. أمر فاضي = "غير مُعدّ" ويُذكر كذلك في سطر الإثبات |
 | `phases.decision_gates` | تاسكات بوابة قرار: تقرير فقط، القرار لصاحب المشروع |
-| `stack_skills` | السكلز الخاصة بالستاك ومتى تُستخدم |
+| `project_types` | أنواع المشروع؛ تحدد أي سكلز من الكتالوج تنعرض وتتفعّل |
+| `stack_skills.<command>` | السكلز الخارجية لكل كوماند مع مرحلتها؛ الكوماند يستخدمها في مرحلتها ويكمّل بدونها لو غير مثبتة |
+| `skills_catalog` | اللي اتراجع من الكتالوج، عشان إعادة تشغيل `start-init` تعرض الجديد فقط |
 | `ux_gate` | بوابة تجربة الاستخدام في `tester` وقراءات الشاشات في `dev` |
 | `audit.extra_axes` | محاور تدقيق خاصة فوق المحاور العامة (أمان، حسابات، أداء) |
 | `identity` | إعداد كوماند الهوية البصرية |

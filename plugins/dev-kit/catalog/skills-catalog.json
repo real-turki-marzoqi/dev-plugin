@@ -1,0 +1,275 @@
+{
+  "catalog_version": 1,
+  "updated": "2026-10-17",
+  "project_types": ["web", "mobile", "desktop", "backend", "odoo"],
+  "stages": {
+    "dev": ["تخطيط", "تنفيذ", "شاشات"],
+    "tester": ["تصحيح الأخطاء", "بوابة UX", "اختبار"],
+    "audit": ["تدقيق أمني", "روائح الكود", "تحقق من الإصلاح"],
+    "identity": ["هوية بصرية"]
+  },
+  "skills": [
+    {
+      "id": "tdd",
+      "purpose_ar": "انضباط TDD: اختبار فاشل أولاً، ثم أقل كود يخليه ينجح، ثم تحسين",
+      "source_repo": "obra/superpowers",
+      "install_type": "plugin",
+      "plugin_id": "superpowers@claude-plugins-official",
+      "marketplace_repo": null,
+      "skills": [
+        { "name": "test-driven-development", "invoke": "superpowers:test-driven-development", "invoke_codex": "test-driven-development" }
+      ],
+      "claude_install": "claude plugin install superpowers@claude-plugins-official --scope user -y",
+      "codex_install": "npx skills add obra/superpowers --skill test-driven-development -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["dev", "tester"],
+      "stage": "التنفيذ وكتابة الاختبارات",
+      "stages": { "dev": "تنفيذ", "tester": "اختبار" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "موجودة في الماركت بليس الرسمي claude-plugins-official. بلوقن superpowers يضم سكلز أخرى غير هذه."
+    },
+    {
+      "id": "systematic-debugging",
+      "purpose_ar": "تصحيح منهجي: إيجاد السبب الجذري وإثباته قبل أي إصلاح",
+      "source_repo": "obra/superpowers",
+      "install_type": "plugin",
+      "plugin_id": "superpowers@claude-plugins-official",
+      "marketplace_repo": null,
+      "skills": [
+        { "name": "systematic-debugging", "invoke": "superpowers:systematic-debugging", "invoke_codex": "systematic-debugging" }
+      ],
+      "claude_install": "claude plugin install superpowers@claude-plugins-official --scope user -y",
+      "codex_install": "npx skills add obra/superpowers --skill systematic-debugging -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["dev", "tester"],
+      "stage": "لما يفشل اختبار أو يُكتشف عيب",
+      "stages": { "dev": "تنفيذ", "tester": "تصحيح الأخطاء" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "نفس بلوقن superpowers؛ يتثبت مرة واحدة للسكلتين."
+    },
+    {
+      "id": "design-patterns",
+      "purpose_ar": "اختيار باترن التصميم المناسب وتطبيقه، ومراجع لـ 21 باترن",
+      "source_repo": "itzcull/software-skills",
+      "install_type": "plugin",
+      "plugin_id": "software-skills@software-skills",
+      "marketplace_repo": "itzcull/software-skills",
+      "skills": [
+        { "name": "design-patterns", "invoke": "software-skills:design-patterns", "invoke_codex": "design-patterns" }
+      ],
+      "claude_install": "claude plugin marketplace add itzcull/software-skills && claude plugin install software-skills@software-skills --scope user -y",
+      "codex_install": "npx skills add itzcull/software-skills --skill design-patterns -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["dev", "audit"],
+      "stage": "التخطيط قبل التنفيذ، ومراجعة التصميم في التدقيق",
+      "stages": { "dev": "تخطيط", "audit": "روائح الكود" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "ريبو صغير (6 نجوم، مساهم واحد) لكن محتواه مرتب ومرخّص. بلوقن software-skills يضم 17 سكل."
+    },
+    {
+      "id": "system-design",
+      "purpose_ar": "تصميم الأنظمة: الحدود والمكونات والتوسع والمقايضات",
+      "source_repo": "itzcull/software-skills",
+      "install_type": "plugin",
+      "plugin_id": "software-skills@software-skills",
+      "marketplace_repo": "itzcull/software-skills",
+      "skills": [
+        { "name": "system-design", "invoke": "software-skills:system-design", "invoke_codex": "system-design" }
+      ],
+      "claude_install": "claude plugin marketplace add itzcull/software-skills && claude plugin install software-skills@software-skills --scope user -y",
+      "codex_install": "npx skills add itzcull/software-skills --skill system-design -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["dev", "audit"],
+      "stage": "التخطيط قبل التنفيذ، ومراجعة المعمارية في التدقيق",
+      "stages": { "dev": "تخطيط", "audit": "روائح الكود" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "نفس بلوقن software-skills."
+    },
+    {
+      "id": "code-smells",
+      "purpose_ar": "روائح الكود وإعادة الهيكلة على نمط Fowler: اكتشاف المشكلة والعلاج المناسب",
+      "source_repo": "itzcull/software-skills",
+      "install_type": "plugin",
+      "plugin_id": "software-skills@software-skills",
+      "marketplace_repo": "itzcull/software-skills",
+      "skills": [
+        { "name": "refactorings", "invoke": "software-skills:refactorings", "invoke_codex": "refactorings" }
+      ],
+      "claude_install": "claude plugin marketplace add itzcull/software-skills && claude plugin install software-skills@software-skills --scope user -y",
+      "codex_install": "npx skills add itzcull/software-skills --skill refactorings -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["audit"],
+      "stage": "روائح الكود والباترنز المضادة في التدقيق",
+      "stages": { "audit": "روائح الكود" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "بديل VoDaiLocz/Design-Patterns: ذاك ما فيه سكل مستقلة للـ anti-patterns، وأمر تثبيته في README لا يطابق اسم الماركت بليس."
+    },
+    {
+      "id": "owasp-security",
+      "purpose_ar": "مراجعة أمنية وكود آمن: OWASP Top 10:2025 وASVS 5.0 وOWASP LLM وAgentic Top 10",
+      "source_repo": "agamm/claude-code-owasp",
+      "install_type": "plugin",
+      "plugin_id": "owasp-security@agamm",
+      "marketplace_repo": "agamm/claude-code-owasp",
+      "skills": [
+        { "name": "owasp-security", "invoke": "owasp-security:owasp-security", "invoke_codex": "owasp-security" }
+      ],
+      "claude_install": "claude plugin marketplace add agamm/claude-code-owasp && claude plugin install owasp-security@agamm --scope user -y",
+      "codex_install": "npx skills add agamm/claude-code-owasp --skill owasp-security -a codex -y",
+      "project_types": ["all"],
+      "used_by": ["audit", "tester"],
+      "stage": "التدقيق الأمني، واختبارات الأمان المستقلة",
+      "stages": { "audit": "تدقيق أمني", "tester": "اختبار" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "README لا يوثّق Codex؛ أمر npx skills يعتمد على اكتشاف مجلد .claude/skills في الريبو."
+    },
+    {
+      "id": "differential-review",
+      "purpose_ar": "مراجعة أمنية للتغييرات (diff/PR/commit) مع حجم الأثر وتغطية الاختبارات",
+      "source_repo": "trailofbits/skills",
+      "install_type": "plugin",
+      "plugin_id": "differential-review@trailofbits",
+      "marketplace_repo": "trailofbits/skills",
+      "skills": [
+        { "name": "differential-review", "invoke": "differential-review:differential-review", "invoke_codex": "differential-review" }
+      ],
+      "claude_install": "claude plugin marketplace add trailofbits/skills && claude plugin install differential-review@trailofbits --scope user -y",
+      "codex_install": "codex plugin marketplace add trailofbits/skills && codex plugin add differential-review@trailofbits",
+      "project_types": ["all"],
+      "used_by": ["audit"],
+      "stage": "التدقيق الأمني للتغييرات الأخيرة",
+      "stages": { "audit": "تدقيق أمني" },
+      "license": "CC-BY-SA-4.0",
+      "verified_on": "2026-10-17",
+      "notes_ar": "الرخصة CC-BY-SA-4.0: أي إعادة نشر تحتاج نسبة وبنفس الرخصة (الكتالوج لا يعيد النشر)."
+    },
+    {
+      "id": "post-patch-validation",
+      "purpose_ar": "التحقق من إصلاح الثغرة: الخطأ الأصلي وأشكاله المتفرعة والسلوك المحيط، مع أدلة قابلة للإعادة",
+      "source_repo": "trailofbits/skills",
+      "install_type": "plugin",
+      "plugin_id": "post-patch-validation@trailofbits",
+      "marketplace_repo": "trailofbits/skills",
+      "skills": [
+        { "name": "post-patch-validation", "invoke": "post-patch-validation:post-patch-validation", "invoke_codex": "post-patch-validation" }
+      ],
+      "claude_install": "claude plugin marketplace add trailofbits/skills && claude plugin install post-patch-validation@trailofbits --scope user -y",
+      "codex_install": "codex plugin marketplace add trailofbits/skills && codex plugin add post-patch-validation@trailofbits",
+      "project_types": ["all"],
+      "used_by": ["audit"],
+      "stage": "بعد كل إصلاح في التدقيق",
+      "stages": { "audit": "تحقق من الإصلاح" },
+      "license": "CC-BY-SA-4.0",
+      "verified_on": "2026-10-17",
+      "notes_ar": "بديل fix-review اللي انحذف من trailofbits/skills في 2026-02-12 (انتقل لريبو داخلي غير عام)."
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "purpose_ar": "قرارات تصميم الواجهات: أنماط وألوان وخطوط وإرشادات UX حسب المجال والستاك",
+      "source_repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "install_type": "plugin",
+      "plugin_id": "ui-ux-pro-max@ui-ux-pro-max-skill",
+      "marketplace_repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "skills": [
+        { "name": "ui-ux-pro-max", "invoke": "ui-ux-pro-max:ui-ux-pro-max", "invoke_codex": "ui-ux-pro-max" }
+      ],
+      "claude_install": "claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill && claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill --scope user -y",
+      "codex_install": "npx ui-ux-pro-max-cli init --ai codex",
+      "project_types": ["web", "mobile", "desktop"],
+      "used_by": ["dev", "identity"],
+      "stage": "تصميم الشاشات واستكشاف الهوية البصرية",
+      "stages": { "dev": "شاشات", "identity": "هوية بصرية" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "يشغّل سكربتات Python محلية للبحث. سكل design المرافقة تستدعي واجهات صور خارجية. README يعلن عن نسخة مدفوعة."
+    },
+    {
+      "id": "impeccable",
+      "purpose_ar": "نقد تصميم الواجهة وفحصها: التسلسل البصري والوضوح والوصول والأداء والاستجابة",
+      "source_repo": "pbakaus/impeccable",
+      "install_type": "plugin",
+      "plugin_id": "impeccable@impeccable",
+      "marketplace_repo": "pbakaus/impeccable",
+      "skills": [
+        { "name": "impeccable", "invoke": "impeccable:impeccable", "invoke_codex": "impeccable" }
+      ],
+      "claude_install": "claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable --scope user -y",
+      "codex_install": "npx impeccable install --providers=codex --scope=project",
+      "project_types": ["web", "mobile", "desktop"],
+      "used_by": ["tester"],
+      "stage": "بوابة UX: الأوامر الفرعية critique وaudit",
+      "stages": { "tester": "بوابة UX" },
+      "license": "Apache-2.0",
+      "verified_on": "2026-10-17",
+      "notes_ar": "سكل واحدة بـ 24 أمر فرعي (critique وaudit وغيرها). تثبّت hooks للتعديل، وترسل telemetry مجهولة افتراضياً (إيقافها: npx impeccable telemetry off أو DO_NOT_TRACK=1)."
+    },
+    {
+      "id": "web-design-guidelines",
+      "purpose_ar": "مراجعة واجهات الويب مقابل إرشادات Vercel للواجهات",
+      "source_repo": "vercel-labs/agent-skills",
+      "install_type": "npx-skills",
+      "plugin_id": null,
+      "marketplace_repo": null,
+      "skills": [
+        { "name": "web-design-guidelines", "invoke": "web-design-guidelines", "invoke_codex": "web-design-guidelines" }
+      ],
+      "claude_install": "npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code -y",
+      "codex_install": "npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a codex -y",
+      "project_types": ["web"],
+      "used_by": ["tester"],
+      "stage": "بوابة UX لمشاريع الويب",
+      "stages": { "tester": "بوابة UX" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "الرخصة MIT مصرّح بها في README، ولا يوجد ملف LICENSE في الريبو. السكل تجلب قواعدها وقت التشغيل من vercel-labs/web-interface-guidelines، فمحتواها غير مثبّت على نسخة."
+    },
+    {
+      "id": "apple-hig",
+      "purpose_ar": "إرشادات Apple للواجهات (HIG) لـ iPhone وMac: المكونات والوصول وDynamic Type والوضع الداكن",
+      "source_repo": "ehmo/platform-design-skills",
+      "install_type": "npx-skills",
+      "plugin_id": null,
+      "marketplace_repo": null,
+      "skills": [
+        { "name": "ios-design-guidelines", "invoke": "ios-design-guidelines", "invoke_codex": "ios-design-guidelines" },
+        { "name": "macos-design-guidelines", "invoke": "macos-design-guidelines", "invoke_codex": "macos-design-guidelines" }
+      ],
+      "claude_install": "npx skills add ehmo/platform-design-skills --skill ios-design-guidelines --skill macos-design-guidelines -a claude-code -y",
+      "codex_install": "npx skills add ehmo/platform-design-skills --skill ios-design-guidelines --skill macos-design-guidelines -a codex -y",
+      "project_types": ["mobile", "desktop"],
+      "used_by": ["dev", "tester"],
+      "stage": "تصميم الشاشات وبوابة UX لتطبيقات أجهزة Apple",
+      "stages": { "dev": "شاشات", "tester": "بوابة UX" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "للتطبيقات اللي تشتغل على أجهزة Apple فقط. آخر تحديث 2026-03-19. الريبو يضم ملف Apple_HIG.pdf (محتوى Apple له حقوق نشر). البديل الأحدث justinwetch/HIGAgentSkills بلا رخصة، فلم يُضف."
+    },
+    {
+      "id": "odoo-18",
+      "purpose_ar": "مرجع تطوير أودو 18: ORM والـ views والـ OWL والتقارير والأمان، مع بوابة ما قبل الكود",
+      "source_repo": "unclecatvn/agent-skills",
+      "install_type": "plugin",
+      "plugin_id": "agent-skills@unclecat-agent-skills",
+      "marketplace_repo": "unclecatvn/agent-skills",
+      "skills": [
+        { "name": "odoo-18", "invoke": "agent-skills:odoo-18", "invoke_codex": "odoo-18" },
+        { "name": "odoo-workflow", "invoke": "agent-skills:odoo-workflow", "invoke_codex": "odoo-workflow" }
+      ],
+      "claude_install": "claude plugin marketplace add unclecatvn/agent-skills && claude plugin install agent-skills@unclecat-agent-skills --scope user -y",
+      "codex_install": "npx skills add unclecatvn/agent-skills --skill odoo-18 --skill odoo-workflow -a codex -y",
+      "project_types": ["odoo"],
+      "used_by": ["dev", "tester"],
+      "stage": "تنفيذ موديولات أودو واختبارها",
+      "stages": { "dev": "تنفيذ", "tester": "اختبار" },
+      "license": "MIT",
+      "verified_on": "2026-10-17",
+      "notes_ar": "فيه مجلدات منفصلة لإصدارات 16 و17 و19: غيّر odoo-18 حسب إصدار المشروع. خطأ معروف: odoo-18-owl-guide.md:698 يستخدم name_get المحذوف في 18. اختير بدل dr-spook/master-odoo (نجمتين، يوم واحد من الـ commits، 972 سطر بالفرنسي)."
+    }
+  ]
+}

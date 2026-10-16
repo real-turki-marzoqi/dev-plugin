@@ -1,6 +1,6 @@
 {
   "name": "dev-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Phase-based dev / tester / audit / identity workflows with a shared project memory (AGENTS.md + docs/) and Notati task-board sync, plus start-init to set up any project. Works in Claude Code and Codex.",
   "author": {
     "name": "real-turki-marzoqi"
@@ -8,12 +8,13 @@
   "homepage": "https://github.com/real-turki-marzoqi/dev-plugin",
   "repository": "https://github.com/real-turki-marzoqi/dev-plugin",
   "keywords": [
-    "workflow",
-    "project-memory",
     "agents-md",
-    "notati",
-    "testing",
     "audit",
-    "codex"
+    "codex",
+    "notati",
+    "project-memory",
+    "skills-catalog",
+    "testing",
+    "workflow"
   ]
 }

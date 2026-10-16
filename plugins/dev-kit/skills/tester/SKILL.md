@@ -2,7 +2,7 @@
 name: tester
 description: Independently test every task awaiting review — sound ones are closed as done, faulty ones are proven, fixed, then closed — and update the project files and Notati. Never asks, never stops until the report. Use for "tester", "/tester P3", or "/tester P3-005". Requires docs/PROJECT_CONFIG.md (created by start-init).
 argument-hint: "[optional: phase or task — e.g. P3 or P3-005]"
-user-invocable: false
+allowed-tools: Read(${CLAUDE_PLUGIN_ROOT}/**)
 ---
 
 # tester — Review and test tasks awaiting review
@@ -11,8 +11,8 @@ You are the **independent tester** of this project. Assume the developer was wro
 
 ## 0. Setup and governing rules
 
-**Load the shared skills first** (sibling folders; read each `SKILL.md` fully):
-`../memory-protocol/` · `../notati-sync/` · `../verify/` · `../report-format/` — and `../codex-adapter/` when running in Codex.
+**Load the shared skills first** — read each one fully: `memory-protocol` · `notati-sync` · `verify` · `report-format`, plus `codex-adapter` when running in Codex.
+Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that variable is not expanded: the sibling folder `../<name>/SKILL.md` of this skill).
 
 | Rule | Detail |
 |---|---|
@@ -24,8 +24,18 @@ You are the **independent tester** of this project. Assume the developer was wro
 | No cheating | Never delete a test, skip it, or weaken an assertion. Fix the code — or fix the test only if the task description proves the test wrong (`verify` §2). |
 | Language | Per `language` in the config. |
 
-### Stack skills and tools
-Use the rows of `stack_skills` whose `commands` include `tester` (skip silently if not installed). Independent tests use the stack's normal test framework. The UX gate (section 3.6) runs only when `ux_gate.enabled`.
+### External skills — `stack_skills.tester`
+**Read `stack_skills.tester` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage:**
+
+| Stage | When |
+|---|---|
+| `تصحيح الأخطاء` | whenever a check or test fails or a defect is suspected: find the root cause with the skill's method **before** fixing (section 4 ❌) |
+| `بوابة UX` | inside the UX gate (section 3.6), only when `ux_gate.enabled` |
+| `اختبار` | when writing independent tests (section 3.4) |
+
+A listed skill that is not installed: continue without it and add one line to the report: "سكل `<skill>` غير مثبتة، شغّل `/start-init`". Never stop for this.
+
+Independent tests use the stack's normal test framework.
 
 ---
 
@@ -83,12 +93,12 @@ Run the checks listed in `ux_gate.checks`:
 
 | Check | How | Evidence |
 |---|---|---|
-| `accessibility` | `ux_gate.accessibility_skill` (level AA): focus order, visible focus, every action by keyboard, contrast ≥ 4.5:1, text scaling | its findings table and a test per fix |
+| `accessibility` | the accessibility skill among the `بوابة UX` skills (level AA): focus order, visible focus, every action by keyboard, contrast ≥ 4.5:1, text scaling | its findings table and a test per fix |
 | `step_budget` | Count clicks/keys per daily operation against `ux_gate.ux_rules` | a UI/integration test that performs the flow and asserts the step count |
 | `shortcuts` | Every important action has a working, visible shortcut (if the UX rules require it) | test that triggers the shortcut |
-| `rtl_strings` | `ux_gate.i18n_skill`: no hard-coded user-visible text; layout correct in every configured locale | test rendered in each locale |
+| `rtl_strings` | the i18n/direction skill among the `بوابة UX` skills (if any): no hard-coded user-visible text; layout correct in every configured locale | test rendered in each locale |
 | `tokens_only` | Grep changed UI files with `ux_gate.hardcoded_style_patterns` outside `ux_gate.token_file` | grep output (must be empty) |
-| `heuristic_review` | A design-critique skill if installed, against `ux_gate.design_reference` and `ux_gate.ux_rules` | issues list; fix those breaking a written rule, log the rest in memory §6 |
+| `heuristic_review` | the design-critique / guidelines skills among the `بوابة UX` skills, against `ux_gate.design_reference` and `ux_gate.ux_rules` | issues list; fix those breaking a written rule, log the rest in memory §6 |
 
 A UX failure is a defect like any other: prove it with a test, fix it, then close.
 
@@ -100,6 +110,7 @@ A UX failure is a defect like any other: prove it with a test, fix it, then clos
 3. Notati: `update_task` → the `done` id.
 
 ### ❌ Has defects
+0. **Root cause:** use the `تصحيح الأخطاء` skills from `stack_skills.tester` before changing code.
 1. **Prove the defect first:** a failing test (or command output). Keep the failing output.
 2. **Fix** it in the original code, smallest change, in the surrounding style.
 3. **Re-run:** the failing test passes + full `verify.analyze` and `verify.test` green.
