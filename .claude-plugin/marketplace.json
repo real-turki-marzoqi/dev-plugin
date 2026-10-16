@@ -1,0 +1,16 @@
+{
+  "name": "dev-kit-marketplace",
+  "owner": {
+    "name": "real-turki-marzoqi"
+  },
+  "metadata": {
+    "description": "Single-plugin marketplace for dev-kit."
+  },
+  "plugins": [
+    {
+      "name": "dev-kit",
+      "source": "./plugins/dev-kit",
+      "description": "Phase-based dev / tester / audit / identity workflows with shared project memory and Notati sync, plus start-init."
+    }
+  ]
+}

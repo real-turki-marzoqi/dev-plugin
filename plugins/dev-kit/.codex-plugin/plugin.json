@@ -1,0 +1,16 @@
+{
+  "name": "dev-kit",
+  "version": "0.1.0",
+  "description": "Phase-based dev / tester / audit / identity workflows with a shared project memory (AGENTS.md + docs/) and Notati task-board sync, plus start-init to set up any project.",
+  "keywords": ["workflow", "project-memory", "agents-md", "notati", "testing", "audit"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dev Kit",
+    "shortDescription": "Phase workflows + shared project memory + Notati sync",
+    "longDescription": "start-init sets up AGENTS.md, docs/PROJECT_CONFIG.md and the project memory in any repository. dev executes a phase, tester verifies and closes tasks under review, audit proves and fixes security, calculation and performance findings, identity locks a measured visual identity. Claude Code and Codex share the same project files.",
+    "developerName": "real-turki-marzoqi",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": "$dev-kit:start-init"
+  }
+}

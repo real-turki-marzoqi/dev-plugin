@@ -1,0 +1,12 @@
+# local agent config — may contain secrets
+.claude/settings.local.json
+.codex/config.toml
+.mcp.json
+.env
+.env.*
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
