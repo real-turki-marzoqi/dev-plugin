@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1] — 2026-10-17
+
+### Fixed
+- Install `test-driven-development` and `systematic-debugging` individually with project-level `npx skills` for Claude Code, matching Codex; remove plugin metadata and the `superpowers:` invocation prefix to avoid the full plugin's SessionStart/bootstrap workflow.
+- Add the shared dev-kit precedence rule to `memory-protocol` and reference it from `dev`, `tester`, `audit` and `identity`: external skills provide techniques within `stack_skills` stages and cannot override dev-kit workflows.
+- Align `notati-sync` §7 with `codex-adapter` §3.2: default to git-ignored project `.codex/config.toml` in a trusted project; keep global `notati-<key>` with `notati.server_codex` as the alternative.
+- Remove the private-repository installation warning from README and document dev-kit precedence in the catalog section.
+
 ## [0.2.0] — 2026-10-17
 
 ### Added

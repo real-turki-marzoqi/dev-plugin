@@ -26,6 +26,9 @@ Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that varia
 ---
 
 ### External skills — `stack_skills.identity`
+
+Apply [memory-protocol §0 — أسبقية dev-kit](../memory-protocol/SKILL.md#أسبقية-dev-kit): dev-kit rules take precedence over external workflows; use each external skill only as a technique within its configured stage.
+
 **Read `stack_skills.identity` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage** (`هوية بصرية`: research in section 3 and the token structure in section 4). A listed skill that is not installed: continue without it and add one line to the report: "سكل `<skill>` غير مثبتة، شغّل `/start-init`". Never stop for this.
 
 ---

@@ -41,7 +41,7 @@ Follow the current host's permissions. The workflows' "do not stop" rules never 
 
 Use only when the native tools are missing and the owner has registered the server:
 
-1. Read the URL **privately** from the Codex MCP configuration (project `.codex/config.toml`, else the user's `~/.codex/config.toml`) for the configured server name. Never print it, never store it in a project file, script, or log, never pass it to a command whose output you show.
+1. Read the URL **privately** from the Codex MCP configuration (project `.codex/config.toml`, else the user's `~/.codex/config.toml`) for the configured server name. Never print it or copy it outside that MCP configuration into another project file, script, or log; never pass it to a command whose output you show.
 2. POST JSON-RPC `tools/call` with the tool name and arguments. Start with `get_context` and run the guard.
 3. Treat a call as successful only if there is no JSON-RPC `error` **and** `result.isError` is not true.
 4. If tool arguments are unclear, read the endpoint's own GET guide (without echoing the URL).

@@ -17,6 +17,10 @@ Every workflow skill in this plugin reads and writes the **same files in the pro
 | Dates | Always `YYYY-MM-DD`, taken from the system/environment date. Never guess a date. |
 | Language | Project docs in `language.docs`; code, tests, commits in `language.code` / `language.commits`; every message to the user in `language.report`. |
 
+### أسبقية dev-kit
+
+**أسبقية dev-kit:** قواعد dev-kit (نقاط التوقف، حد الأسئلة، الحالات، الذاكرة، الإثبات، Notati) تكسب على أي workflow تفرضه سكل خارجية. السكلز الخارجية تُستخدم **كتقنية داخل المرحلة** المحددة في `stack_skills`، لا كسير عمل بديل. لو سكل خارجية تطلب سؤال المستخدم، أو كتابة ملف خطة/تصميم خارج `docs/` المعتمدة، أو التوقف بعد نقطة الأسئلة: تجاهل هذا الجزء منها وكمّل حسب dev-kit.
+
 ## 1. Files
 
 | File | Purpose | Written by | Update mode |

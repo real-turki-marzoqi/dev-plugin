@@ -25,6 +25,9 @@ Path: `${CLAUDE_PLUGIN_ROOT}/skills/<name>/SKILL.md` (in Codex, where that varia
 | Language | Per `language` in the config. |
 
 ### External skills — `stack_skills.audit`
+
+Apply [memory-protocol §0 — أسبقية dev-kit](../memory-protocol/SKILL.md#أسبقية-dev-kit): dev-kit rules take precedence over external workflows; use each external skill only as a technique within its configured stage.
+
 **Read `stack_skills.audit` from `docs/PROJECT_CONFIG.md` and use every listed skill in its stage:**
 
 | Stage | When |

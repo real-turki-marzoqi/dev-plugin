@@ -13,13 +13,11 @@
       "id": "tdd",
       "purpose_ar": "انضباط TDD: اختبار فاشل أولاً، ثم أقل كود يخليه ينجح، ثم تحسين",
       "source_repo": "obra/superpowers",
-      "install_type": "plugin",
-      "plugin_id": "superpowers@claude-plugins-official",
-      "marketplace_repo": null,
+      "install_type": "npx-skills",
       "skills": [
-        { "name": "test-driven-development", "invoke": "superpowers:test-driven-development", "invoke_codex": "test-driven-development" }
+        { "name": "test-driven-development", "invoke": "test-driven-development", "invoke_codex": "test-driven-development" }
       ],
-      "claude_install": "claude plugin install superpowers@claude-plugins-official --scope user -y",
+      "claude_install": "npx skills add obra/superpowers --skill test-driven-development -a claude-code -y",
       "codex_install": "npx skills add obra/superpowers --skill test-driven-development -a codex -y",
       "project_types": ["all"],
       "used_by": ["dev", "tester"],
@@ -27,19 +25,17 @@
       "stages": { "dev": "تنفيذ", "tester": "اختبار" },
       "license": "MIT",
       "verified_on": "2026-10-17",
-      "notes_ar": "موجودة في الماركت بليس الرسمي claude-plugins-official. بلوقن superpowers يضم سكلز أخرى غير هذه."
+      "notes_ar": "تثبيت السكل وحدها على مستوى المشروع، دون بلوقن superpowers أو hook SessionStart أو سكل using-superpowers التي تفرض workflow. جُرّب التثبيت المنفرد لـ Claude Code وCodex في 2026-10-17؛ تُستخدم كتقنية داخل مرحلتها وفق أسبقية dev-kit."
     },
     {
       "id": "systematic-debugging",
       "purpose_ar": "تصحيح منهجي: إيجاد السبب الجذري وإثباته قبل أي إصلاح",
       "source_repo": "obra/superpowers",
-      "install_type": "plugin",
-      "plugin_id": "superpowers@claude-plugins-official",
-      "marketplace_repo": null,
+      "install_type": "npx-skills",
       "skills": [
-        { "name": "systematic-debugging", "invoke": "superpowers:systematic-debugging", "invoke_codex": "systematic-debugging" }
+        { "name": "systematic-debugging", "invoke": "systematic-debugging", "invoke_codex": "systematic-debugging" }
       ],
-      "claude_install": "claude plugin install superpowers@claude-plugins-official --scope user -y",
+      "claude_install": "npx skills add obra/superpowers --skill systematic-debugging -a claude-code -y",
       "codex_install": "npx skills add obra/superpowers --skill systematic-debugging -a codex -y",
       "project_types": ["all"],
       "used_by": ["dev", "tester"],
@@ -47,7 +43,7 @@
       "stages": { "dev": "تنفيذ", "tester": "تصحيح الأخطاء" },
       "license": "MIT",
       "verified_on": "2026-10-17",
-      "notes_ar": "نفس بلوقن superpowers؛ يتثبت مرة واحدة للسكلتين."
+      "notes_ar": "تثبيت السكل وحدها على مستوى المشروع، دون بلوقن superpowers أو hook SessionStart أو سكل using-superpowers التي تفرض workflow. جُرّب التثبيت المنفرد لـ Claude Code وCodex في 2026-10-17؛ تُستخدم كتقنية داخل مرحلتها وفق أسبقية dev-kit."
     },
     {
       "id": "design-patterns",

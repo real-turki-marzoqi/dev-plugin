@@ -1,6 +1,6 @@
 {
   "name": "dev-kit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Phase-based dev / tester / audit / identity workflows with a shared project memory (AGENTS.md + docs/) and Notati task-board sync, plus start-init to set up any project. Works in Claude Code and Codex.",
   "author": {
     "name": "real-turki-marzoqi"

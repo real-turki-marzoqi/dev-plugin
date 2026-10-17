@@ -14,7 +14,7 @@ All values come from `docs/PROJECT_CONFIG.md` → `notati` and `statuses`. If `n
 
 The Notati MCP URL contains a **private, project-scoped token**.
 
-- **Never** write it in any repository file, commit, log, script, report, evidence line, or message to the user — not even partially.
+- **Never** write it in any repository file, commit, log, script, report, evidence line, or message to the user — not even partially. The only repository-local storage exception is the user's manual registration in git-ignored, untracked `.codex/config.toml` in a trusted project (§7).
 - Never echo it back if the user pastes it. Refer to it as "رابط MCP".
 - The config stores only `key`, `project_id`, `project_name`, `phase_ids`, and `statuses`.
 - `audit` treats a Notati URL in any tracked file as a **critical** secret finding.
@@ -93,7 +93,7 @@ A row with `role: other` (e.g. a "deferred" state) is used only when the phase f
 | Agent | Method | Where it is stored |
 |---|---|---|
 | Claude Code | `claude mcp add --transport http --scope local <notati.server> "<URL>"` | the user's `~/.claude.json`, under this project's path — **not** in the repo |
-| Codex | per the `codex-adapter` skill (user-level config, URL never in the repo) | the user's Codex config |
+| Codex | حسب `codex-adapter` §3.2: إعداد المشروع `.codex/config.toml` (متجاهل في git، مشروع trusted) افتراضياً؛ البديل العام `notati-<key>` مع `notati.server_codex` | `<project>/.codex/config.toml` (غير متتبع) أو `~/.codex/config.toml` |
 
 Rules:
 - Prefer that the **user runs the command themselves** (in Claude Code: prefix with `!` in the prompt) with the URL in place of `<URL>`. Show them the command template only, never a filled-in URL.

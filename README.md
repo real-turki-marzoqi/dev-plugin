@@ -30,7 +30,7 @@
 
 ## التثبيت
 
-> الريبو: [real-turki-marzoqi/dev-plugin](https://github.com/real-turki-marzoqi/dev-plugin). **الريبو خاص:** التثبيت يحتاج أن يكون git على الجهاز مسجّل دخول بحساب له صلاحية عليه (مثلاً `gh auth login`).
+> الريبو: [real-turki-marzoqi/dev-plugin](https://github.com/real-turki-marzoqi/dev-plugin).
 
 ### Claude Code
 
@@ -92,6 +92,8 @@ docs/adr/0000-template.md · docs/adr/README.md
 ## الكتالوج
 
 **الخلاصة:** `plugins/dev-kit/catalog/skills-catalog.json` قائمة مراجع لسكلز خارجية موثّقة مع أوامر تثبيتها. **البلوقن لا ينسخ أي سكل خارجية داخله.** التفاصيل الكاملة في [`catalog/README.md`](plugins/dev-kit/catalog/README.md).
+
+**أسبقية dev-kit:** قواعده تكسب على أي workflow خارجي؛ السكلز الخارجية تقنية داخل مرحلة `stack_skills` فقط، وفق [قاعدة الأسبقية](plugins/dev-kit/skills/memory-protocol/SKILL.md#أسبقية-dev-kit).
 
 ### كيف يشتغل
 
